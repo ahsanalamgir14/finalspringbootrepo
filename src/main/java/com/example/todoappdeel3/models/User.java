@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name = "Users")
 public class User {
     @Id
     @GeneratedValue
@@ -14,6 +14,11 @@ public class User {
     private String password;
 
     public User() {
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {
