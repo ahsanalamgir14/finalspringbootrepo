@@ -6,20 +6,14 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
-import com.example.todoappdeel3.models.User;
-import io.jsonwebtoken.*;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Component
-public class JwtUtil {
+public class JWTUtil {
     @Value("${jwt.secret}")
     private String secret;
 

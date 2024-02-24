@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity(name = "Users")
-public class User {
+public class CustomUser {
     @Id
     @GeneratedValue
     private Long id;
@@ -13,10 +13,10 @@ public class User {
     private String email;
     private String password;
 
-    public User() {
+    public CustomUser() {
     }
 
-    public User(String email, String password) {
+    public CustomUser(String email, String password) {
         this.email = email;
         this.password = password;
     }

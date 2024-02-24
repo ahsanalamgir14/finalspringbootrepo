@@ -3,8 +3,8 @@ package com.example.todoappdeel3.utils;
 import com.example.todoappdeel3.dao.TaskDAO;
 import com.example.todoappdeel3.dao.UserRepository;
 import com.example.todoappdeel3.models.Category;
+import com.example.todoappdeel3.models.CustomUser;
 import com.example.todoappdeel3.models.Task;
-import com.example.todoappdeel3.models.User;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,9 +35,9 @@ public class Seeder {
     }
 
     private void seedUser(){
-        User user = new User();
-        user.setEmail("test@mail.com");
-        user.setPassword(new BCryptPasswordEncoder().encode("Test123!"));
-        userRepository.save(user);
+        CustomUser customUser = new CustomUser();
+        customUser.setEmail("test@mail.com");
+        customUser.setPassword(new BCryptPasswordEncoder().encode("Test123!"));
+        userRepository.save(customUser);
     }
 }
