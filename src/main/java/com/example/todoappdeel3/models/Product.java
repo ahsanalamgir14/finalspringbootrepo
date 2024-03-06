@@ -4,18 +4,19 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
-public class Task {
+public class Product {
     @Id
     @GeneratedValue
     private long id;
     private String name;
+    private Number price;
     private String description;
 
     private boolean isFinished = false;
 
      /*
-    Maps the many-to-one relationship between task and category, jsonbackreference so that we do not get an
-    infinite dependency loop in the request. Cascasdetype merge so the task is able to create a category if we
+    Maps the many-to-one relationship between product and category, jsonbackreference so that we do not get an
+    infinite dependency loop in the request. Cascasdetype merge so the product is able to create a category if we
     seed the data to the database. Without the merge you get a persistence race condition.
     */
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -23,12 +24,13 @@ public class Task {
     private Category category;
 
     //needed by JPA to create the entity must be present no arg constructor
-    public Task() {
+    public Product() {
     }
 
-    public Task(String name, String description, Category category) {
+    public Product(String name, String description, Number price, Category category) {
         this.name = name;
         this.description = description;
+        this.price = price;
         this.category = category;
     }
 
@@ -57,6 +59,10 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Number getPrice() { return price; }
+
+    public void setPrice(Number price) { this.price = price; }
 
     public String getDescription() {
         return description;

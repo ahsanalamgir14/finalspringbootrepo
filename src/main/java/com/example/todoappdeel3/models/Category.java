@@ -16,12 +16,12 @@ public class Category {
 
     private String name;
     /*
-    maps the one-to-many relationship between category and tasks, jsonmanaged so that we do not get an
+    maps the one-to-many relationship between category and products, jsonmanaged so that we do not get an
     infinite dependency loop in the request.
      */
     @OneToMany(mappedBy = "category")
     @JsonManagedReference
-    private Set<Task> tasks;
+    private Set<Product> products;
 
     //needed by JPA to create the entity must be present no arg constructor
     public Category() {
@@ -33,12 +33,12 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Task> getTasks() {
-        return tasks;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     public String getName() {
