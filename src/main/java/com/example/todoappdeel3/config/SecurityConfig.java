@@ -36,9 +36,10 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((auth) -> auth
-                    .requestMatchers("/auth/**").permitAll()
-                    .requestMatchers("/error").anonymous()
-                    .anyRequest().authenticated()
+                        .requestMatchers("/products").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/error").anonymous()
+                        .anyRequest().authenticated()
                 )
                 .build();
     }
