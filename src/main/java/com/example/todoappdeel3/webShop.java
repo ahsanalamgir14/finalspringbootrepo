@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ToDoAppDeel3Application {
+public class webShop {
 
     public static void main(String[] args) {
-        SpringApplication.run(ToDoAppDeel3Application.class, args);
+        SpringApplication.run(webShop.class, args);
     }
 
+
+    
 }
