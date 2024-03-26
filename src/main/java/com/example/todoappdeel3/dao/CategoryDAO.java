@@ -2,6 +2,7 @@ package com.example.todoappdeel3.dao;
 
 import com.example.todoappdeel3.dto.CategoryDTO;
 import com.example.todoappdeel3.models.Category;
+import com.example.todoappdeel3.repository.CategoryRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

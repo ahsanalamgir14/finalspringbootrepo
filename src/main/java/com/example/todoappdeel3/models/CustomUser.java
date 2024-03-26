@@ -1,8 +1,6 @@
 package com.example.todoappdeel3.models;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.example.todoappdeel3.Enums.UserRole;
+import jakarta.persistence.*;
 
 @Entity(name = "Users")
 public class CustomUser {
@@ -13,20 +11,38 @@ public class CustomUser {
     private String email;
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
+
     public CustomUser() {
     }
 
-    public CustomUser(String email, String password) {
+    public CustomUser(String email, String password, UserRole userRole) {
         this.email = email;
         this.password = password;
+        this.userRole = userRole;
+    }
+
+
+
+//    public CustomUser(String email, String encodedPassword) {
+//    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String username) {
-        this.email = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -37,11 +53,13 @@ public class CustomUser {
         this.password = password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
-    public Long getId() {
-        return id;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
+
+
 }
