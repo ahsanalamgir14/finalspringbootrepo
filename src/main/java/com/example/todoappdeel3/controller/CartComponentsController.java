@@ -60,6 +60,13 @@ public class CartComponentsController {
         return this.userService.deleteOrderCartComponentsBycartimtemId(cartcomponentsDTO);
     }
 
+    @DeleteMapping("/checkoutCart")
+
+    public ResponseEntity<String> checkoutCart(@RequestBody CartComponentsDTO cartcomponentsDTO){
+
+        return this.userService.checkoutCart(cartcomponentsDTO);
+    }
+
     @PostMapping("{userid}/minus/{productId}")
     public ResponseEntity<String> minusCartItemQuantity(@PathVariable Long userid, @PathVariable Long productId){
         return this.userService.minusQuantity(userid, productId);

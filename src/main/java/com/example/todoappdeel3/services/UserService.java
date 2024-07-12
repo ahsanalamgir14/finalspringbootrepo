@@ -199,6 +199,30 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public ResponseEntity<String> checkoutCart(CartComponentsDTO CartComponentsDTO) {
+
+        Optional<Order> pendingOrder = orderRepository.findByUserIdAndOrderStatus(CartComponentsDTO.getUserid(), OrderStatus.Pending);
+        if (pendingOrder.isEmpty()) {
+
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "cart doesnt exists"
+            );
+
+        }
+        Optional<CartComponents> optionalCartComponents = CartComponentsRepository.findByUserIdAndProductIdAndOrderId(CartComponentsDTO.getUserid(), CartComponentsDTO.getProductid(), pendingOrder.get().getId());
+        if (optionalCartComponents.isEmpty()) {
+
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "cart doesnt exists"
+            );
+
+        }
+        CartComponentsRepository.delete(CartComponents);
+        return ResponseEntity.ok("Checkout Success");
+
+
+    }
+
     public ResponseEntity<String> minusQuantity(Long userid, Long productId) {
 
         Optional<Order> pendingOrder = orderRepository.findByUserIdAndOrderStatus(userid, OrderStatus.Pending);
